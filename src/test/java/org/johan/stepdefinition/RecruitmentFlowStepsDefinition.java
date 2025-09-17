@@ -5,7 +5,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static org.johan.tasks.BrowseTorecruitmentModuleTask.browseTorecruitmentModuleTask;
 import static org.johan.tasks.OpenLandingPageTask.openLandingPageTask;
+import static org.johan.tasks.RecruitmentProcessTask.recruitmentProcessTask;
 
 public class RecruitmentFlowStepsDefinition extends Setup {
 
@@ -19,7 +21,9 @@ public class RecruitmentFlowStepsDefinition extends Setup {
             System.out.println("entrando al given");
             userSetupBrowser(ACTOR_NAME);
             theActorInTheSpotlight().wasAbleTo(
-                    openLandingPageTask()
+                    openLandingPageTask(),
+                    browseTorecruitmentModuleTask()
+
 
             );
 
@@ -32,6 +36,18 @@ public class RecruitmentFlowStepsDefinition extends Setup {
 
     @When("add a new person in recruitment")
     public void addANewPersonInRecruitment() {
+
+        System.out.println("entrando al When");
+        userSetupBrowser(ACTOR_NAME);
+        theActorInTheSpotlight().wasAbleTo(
+                recruitmentProcessTask()
+
+
+        );
+
+
+
+
 
     }
     @Then("will be visible the person data and hired status")
